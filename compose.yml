@@ -1,0 +1,37 @@
+# Docker Compose file version
+version: '3.9'
+
+# Define services
+services:
+  # Name of the service
+  app:
+    # Build context for Dockerfile
+    build: .
+    # Map port 3000 of the service to port 3000 on the host
+    ports:
+      - "3000:3000"
+    # Set the working directory in the container
+    working_dir: "/app"
+    # Set environment variables
+    environment:
+      - HOST=0.0.0.0
+
+# Uncomment these lines if you're in a development environment
+    volumes:
+      - "./src:/app/src"
+      - node_modules_volume:/app/node_modules
+    # Enable tty for CLI interactions
+    tty: true
+
+# Define volumes (uncomment for development)
+volumes:
+  node_modules_volume:
+
+
+####### 以上の説明 #######
+
+# ./src:/app/src: ホストの ./src ディレクトリとコンテナ内の /app/src ディレクトリをマウント （ 同期 ） します。これによって、ローカルでのコード変更が即座にコンテナに反映されます。
+
+# node_modules_volume:/app/node_modules: node_modules ディレクトリを専用の Docker ボリュームにマウントします。これにより、 node_modules はコンテナを再ビルドするたびにリセットされることがなく、依存関係のインストールが高速になります。
+
+# tty: true: このオプションを有効にすると、コンテナに TTY （ Teletypewriter ） を割り当てます。これにより、コンテナ内で対話的な操作 （ CLI コマンドの実行など ） が可能になります。
