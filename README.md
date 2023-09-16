@@ -1,3 +1,9 @@
+# [Next.js Docker Example](https://github.com/Tomoki-Saito/nextjs-docker-example)
+
+Next.js のプロジェクトを Docker コンテナで動かすサンプルです。
+
+## About Next.js
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
